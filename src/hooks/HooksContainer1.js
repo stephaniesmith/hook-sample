@@ -1,7 +1,7 @@
 import React, {  } from 'react';
 import Routes from './routes';
 
-const App = () => {
+const HooksContainer1 = () => {
 
   return (
     <div>
@@ -11,4 +11,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HooksContainer1;
