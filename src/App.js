@@ -5,7 +5,7 @@ const App = () => {
 
   return (
     <div>
-    React
+      React
       <Routes />
     </div>
   );
