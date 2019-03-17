@@ -2,6 +2,7 @@ import React, { useState, useReducer } from 'react';
 import Routes from './routes';
 import Context from './utils/context';
 import { HooksReducer, initialState } from './store/hooksState/hooksReducer';
+import { UserReducer } from './store/hooksState/userInputHooksReducer'
 import { success, failure } from './store/actions/actions';
 
 const App = () => {
