@@ -6,6 +6,7 @@ import Header from './containers/header';
 import Profile from './containers/profile';
 import Form1 from './containers/form1';
 import RenderList from './containers/renderlist';
+import HooksForm from './hooks/HooksForm';
 
 
 import Component1 from './functional/component1';
@@ -73,6 +74,7 @@ class Routes extends Component {
               <Route path='/redirect' component={UnauthRedirect} />
               <Route path='/renderlist' component={RenderList} />
               <Route path='/hookscontainer' component={HooksContainer1} />
+              <Route path='/hooksform' component={HooksForm} />
 
               <Route path='/callback' render={(props) => { handleAuthentication(props); return <Callback />;}} />
               <Route path="/component1" render={(props) => <Component1 {...props} /> } />
