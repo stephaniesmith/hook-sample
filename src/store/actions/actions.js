@@ -56,6 +56,7 @@ export const remove_profile = () => {
 };
 
 export const user_input_change = text => {
+  console.log('RC:', text);
   return {
     type: ACTION_TYPES.USER_INPUT_CHANGE,
     payload: text
@@ -63,6 +64,7 @@ export const user_input_change = text => {
 };
 
 export const user_input_submit = text => {
+  console.log('RS:', text);
   return {
     type: ACTION_TYPES.USER_INPUT_SUBMIT,
     payload: text

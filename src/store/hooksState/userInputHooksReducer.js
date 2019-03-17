@@ -1,8 +1,8 @@
 import * as ACTION_TYPES from '../actions/action_types';
 
 export const initialState = {
-  user_test_change: '',
-  user_test_submit: ''
+  user_input_change: 'hello',
+  user_input_submit: 'hello'
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -10,12 +10,12 @@ export const UserReducer = (state = initialState, action) => {
     case ACTION_TYPES.USER_INPUT_CHANGE:
       return {
         ...state,
-        user_test_change: action.payload,
+        user_input_change: action.payload,
       };
     case ACTION_TYPES.USER_INPUT_SUBMIT:
       return {
         ...state,
-        user_test_submit: action.payload,
+        user_input_submit: action.payload,
       };
     default:
       return state;

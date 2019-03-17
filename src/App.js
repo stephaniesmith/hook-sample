@@ -1,15 +1,16 @@
 import React, { useState, useReducer } from 'react';
 import Routes from './routes';
 import Context from './utils/context';
-import { HooksReducer, initialState } from './store/hooksState/hooksReducer';
-import { UserReducer } from './store/hooksState/userInputHooksReducer'
-import { success, failure } from './store/actions/actions';
+import { HooksReducer, initialState as initialHooksState } from './store/hooksState/hooksReducer';
+import { UserReducer, initialState as initialUserState } from './store/hooksState/userInputHooksReducer'
+import { success, failure, user_input_change, user_input_submit } from './store/actions/actions';
 
 const App = () => {
 
   const [stateGlobal, setStateGlobal] = useState(0);
 
-  const [stateContextGlobal, dispatchContextGlobal] = useReducer(HooksReducer, initialState);
+  const [stateContextGlobal, dispatchContextGlobal] = useReducer(HooksReducer, initialHooksState);
+  const [userState, userDispatch] = useReducer(UserReducer, initialUserState);
 
   const incrementGlobalState = () => {
     setStateGlobal(stateGlobal + 1);
@@ -27,6 +28,17 @@ const App = () => {
     dispatchContextGlobal(failure());
   };
 
+  const handleUseContextChange = ({ target }) => {
+    userDispatch(user_input_change(target.value));
+  };
+
+  const handleUseContextSubmit = event => {
+    event.preventDefault();
+    event.persist();
+
+    userDispatch(user_input_submit(event.target.useContext.value));
+  };
+
   return (
     <div>
       React
@@ -38,7 +50,12 @@ const App = () => {
 
           reducerGlobalState: stateContextGlobal.stateprop2,
           dispatchContextTrue: () => handleContextDispatchTrue(),
-          dispatchContextFalse: () => handleContextDispatchFalse()
+          dispatchContextFalse: () => handleContextDispatchFalse(),
+
+          useContextChange: userState.user_input_change,
+          useContextSubmit: userState.user_input_submit,
+          useContextHandleChange: event => handleUseContextChange(event),
+          useContextHandleSubmit: event => handleUseContextSubmit(event),
         }}>
         <Routes />
       </Context.Provider>
